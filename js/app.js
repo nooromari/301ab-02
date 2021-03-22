@@ -19,16 +19,21 @@ Animal.prototype.render = function() {
 
 Animal.prototype.dropList = function(){
   let keyArr = [];
-  let opt=false;
-  if(!(keyArr.includes(this.keyword))){
-      console.log(!(keyArr.includes(this.keyword)));
-      opt=true;
-      // console.log(!(keyArr.includes(this.keyword)));
-    }
-    if(opt){
+  let opt=true;
+//   keyArr.push(this.keyword);
+//   keyArr.each(function(element){
+//     if(element === this.keyword){
+//       opt = false;
+//     }
+//   });
+  //   if(!(keyArr.includes(this.keyword))){
+  //     console.log(!(keyArr.includes(this.keyword)));
+  //     opt=true;
+  //     // console.log(!(keyArr.includes(this.keyword)));
+  //   }
+//   if(opt){
     $('select').append(`<option value="${this.keyword}">${this.keyword}</option>`);
-    }
-    keyArr.push(this.keyword);
+//   }
 };
 
 
