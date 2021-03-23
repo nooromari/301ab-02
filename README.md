@@ -1,4 +1,4 @@
-# 301ab-02
+## lab-02
 
 **Estimate 1**
 
@@ -38,3 +38,56 @@ Finish time: 4:30pm
 
 Actual time needed to complete: 1 and half hr
 
+
+## lab-03
+
+### Feature 1
+
+Number and name of feature: Feature 1: Pagination
+
+Estimate of time needed to complete: 1 and half hr
+
+Start time: 5:00pm
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+
+### Feature 2
+
+Number and name of feature: Feature 2: Templating
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+
+### Feature 3
+
+Number and name of feature: Feature 3: Styling with Flexbox
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+
+### Feature 4
+
+Number and name of feature: Feature 4: Sort the images
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____

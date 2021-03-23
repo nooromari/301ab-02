@@ -40,16 +40,69 @@ $(document).ready(function() {
       });
       $('select').on('click', function(event){
         $('div').remove();
-        $('main').append($('<div></div>'));
+        // $('main').append($('<div></div>'));
         objectArr.forEach(element =>{
           if (event.target.value === element.keyword) {
-            $('div').append(`<h2>${element.title}</h2>`);
-            $('div').append(`<img src="${element.url}">`);
-            $('div').append(`<p>${element.descrip}</p>`);
+            $('main').append(`<div class="${element.keyword}"><h2>${element.title}</h2><img src="${element.url}"><p>${element.descrip}</p></div>`);
           }
         });
       });
     });
+  // $('.page1').click(function(){
+  //   $('div').hide();
+  //   const ajaxSettings = {
+  //     method: 'get',
+  //     dataType: 'json'
+  //   };
+  //   $.ajax('../data/page-1.json', ajaxSettings)
+  //     .then(data => {
+  //       data.forEach(element => {
+  //         let newAnimal = new Animal(element.title,element.image_url,element.description,element.horns,element.keyword);
+  //         newAnimal.render();
+  //         newAnimal.dropList();
+  //       });
+  //       uniqueArray.forEach(element =>{
+  //         $('select').append(`<option value="${element}">${element}</option>`);
+  //       });
+  //       $('select').on('click', function(event){
+  //         $('div').remove();
+  //         // $('main').append($('<div></div>'));
+  //         objectArr.forEach(element =>{
+  //           if (event.target.value === element.keyword) {
+  //             $('main').append(`<div class="${element.keyword}"><h2>${element.title}</h2><img src="${element.url}"><p>${element.descrip}</p></div>`);
+  //           }
+  //         });
+  //       });
+  //     });
+  // });
+  // $('.page2').click(function(){
+  //   $('div').hide();
+  //   const ajaxSettings = {
+  //     method: 'get',
+  //     dataType: 'json'
+  //   };
+  //   $.ajax('../data/page-2.json', ajaxSettings)
+  //     .then(data => {
+  //       data.forEach(element => {
+  //         let newAnimal = new Animal(element.title,element.image_url,element.description,element.horns,element.keyword);
+  //         newAnimal.render();
+  //         newAnimal.dropList();
+  //       });
+  //       uniqueArray.forEach(element =>{
+  //         $('select').append(`<option value="${element}">${element}</option>`);
+  //       });
+  //       $('select').on('click', function(event){
+  //         $('div').remove();
+  //         // $('main').append($('<div></div>'));
+  //         objectArr.forEach(element =>{
+  //           if (event.target.value === element.keyword) {
+  //             $('main').append(`<div class="${element.keyword}"><h2>${element.title}</h2><img src="${element.url}"><p>${element.descrip}</p></div>`);
+
+  //           }
+  //         });
+  //       });
+  //     });
+  // });
 });
 
 
