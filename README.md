@@ -49,9 +49,9 @@ Estimate of time needed to complete: 1 and half hr
 
 Start time: 5:00pm
 
-Finish time: _____
+Finish time: 10:00pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 2 and half hr
 
 
 ### Feature 2
