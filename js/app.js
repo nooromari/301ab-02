@@ -13,9 +13,7 @@ function Animal(title,url,descrip,horns,keyword){
 }
 
 Animal.prototype.render = function() {
-  $('main').append(`<div><h2>${this.title}</h2><img src="${this.url}"><p>${this.descrip}</p></div>`);
-  // $('div').append(`<img src="${this.url}">`);
-  // $('div').append(`<p>${this.descrip}</p>`);
+  $('main').append(`<div class="${this.keyword}"><h2>${this.title}</h2><img src="${this.url}"><p>${this.descrip}</p></div>`);
 };
 
 Animal.prototype.dropList = function(){

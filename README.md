@@ -34,7 +34,7 @@ Estimate of time needed to complete: 1 hr
 
 Start time: 3:00pm
 
-Finish time: _____
+Finish time: 4:30pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 and half hr
 
