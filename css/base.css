@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Pangolin', cursive;
+    background-color: rgb(221, 255, 244);
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+
