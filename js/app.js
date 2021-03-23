@@ -1,7 +1,8 @@
 'use strict';
 
 let objectArr=[];
-
+let keyArr = [];
+let uniqueArray=[];
 function Animal(title,url,descrip,horns,keyword){
   this.title = title;
   this.url = url;
@@ -18,22 +19,8 @@ Animal.prototype.render = function() {
 };
 
 Animal.prototype.dropList = function(){
-  let keyArr = [];
-  let opt=true;
-//   keyArr.push(this.keyword);
-//   keyArr.each(function(element){
-//     if(element === this.keyword){
-//       opt = false;
-//     }
-//   });
-  //   if(!(keyArr.includes(this.keyword))){
-  //     console.log(!(keyArr.includes(this.keyword)));
-  //     opt=true;
-  //     // console.log(!(keyArr.includes(this.keyword)));
-  //   }
-//   if(opt){
-    $('select').append(`<option value="${this.keyword}">${this.keyword}</option>`);
-//   }
+  keyArr.push(this.keyword);
+  uniqueArray = [...new Set(keyArr)];
 };
 
 
@@ -50,6 +37,10 @@ $(document).ready(function() {
         newAnimal.render();
         newAnimal.dropList();
       });
+      uniqueArray.forEach(element =>{
+        $('select').append(`<option value="${element}">${element}</option>`);
+      });
+      
     });
 });
 
