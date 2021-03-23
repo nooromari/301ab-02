@@ -40,7 +40,18 @@ $(document).ready(function() {
       uniqueArray.forEach(element =>{
         $('select').append(`<option value="${element}">${element}</option>`);
       });
-      
+      $('select').on('click', function(event){
+        $('div').remove();
+        $('main').append($('<div></div>'));
+        objectArr.forEach(element =>{
+          if (event.target.value === element.keyword) {
+            $('div').append(`<h2>${element.title}</h2>`);
+            $('div').append(`<img src="${element.url}">`);
+            $('div').append(`<p>${element.descrip}</p>`);
+          }
+        });
+      });
     });
 });
+
 

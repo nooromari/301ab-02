@@ -21,9 +21,9 @@ Estimate of time needed to complete: 1 hr
 
 Start time: 6:00pm
 
-Finish time: _____
+Finish time: 3:00pm (next day)
 
-Actual time needed to complete: _____
+Actual time needed to complete: about 5 hours
 
 
 **Estimate 3**
