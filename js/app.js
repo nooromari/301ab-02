@@ -13,9 +13,9 @@ function Animal(title,url,descrip,horns,keyword){
   objectArr.push(this);
 }
 
-Animal.prototype.render = function() {
-  $('main').append(`<div class="${this.keyword}"><h2>${this.title}</h2><img src="${this.url}"><p>${this.descrip}</p></div>`);
-};
+// Animal.prototype.render = function() {
+//   $('main').append(`<div class="${this.keyword}"><h2>${this.title}</h2><img src="${this.url}"><p>${this.descrip}</p></div>`);
+// };
 
 Animal.prototype.dropList = function(){
   keyArr.push(this.keyword);
@@ -24,6 +24,16 @@ Animal.prototype.dropList = function(){
 Animal.prototype.dropList2 = function(){
   keyArr.push(this.keyword);
   uniqueArray2 = [...new Set(keyArr)];
+};
+
+Animal.prototype.toHtml = function () {
+  // 1. Get the template from the HTML document
+  let template = $('#photo-template').html();
+  // 2. Use Mustache to "render" new html by merging the template with the data
+  let html = Mustache.render(template, this);
+  // 3. Do not forget to return the HTML from this method
+  // console.log(this);
+  return html;
 };
 
 $(document).ready(function() {
@@ -36,7 +46,8 @@ $(document).ready(function() {
     .then(data => {
       data.forEach(element => {
         let newAnimal = new Animal(element.title,element.image_url,element.description,element.horns,element.keyword);
-        newAnimal.render();
+        // newAnimal.render();
+        newAnimal.toHtml();
         newAnimal.dropList();
       });
       uniqueArray.forEach(element =>{
@@ -62,7 +73,8 @@ $(document).ready(function() {
       .then(data => {
         data.forEach(element => {
           let newAnimal = new Animal(element.title,element.image_url,element.description,element.horns,element.keyword);
-          newAnimal.render();
+          // newAnimal.render();
+
           newAnimal.dropList();
         });
         // uniqueArray.forEach(element =>{
@@ -90,7 +102,7 @@ $(document).ready(function() {
       .then(data => {
         data.forEach(element => {
           let newAnimal = new Animal(element.title,element.image_url,element.description,element.horns,element.keyword);
-          newAnimal.render();
+          // newAnimal.render();
           newAnimal.dropList2();
         });
         $('select').append(`<option value="default">Filter by Keyword</option>`);
