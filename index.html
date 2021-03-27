@@ -4,6 +4,13 @@
   <title>The Gallery of Horns</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <!-- <script> -->
+  <template id="photo-template" type="text/x-tmpl-mustache">
+    <h2>{{title}}</h2>
+    <img src="{{url}}" alt="">
+    <p>{{descrip}}</p>
+  </template>
+<!-- </script> -->
   <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/base.css">
@@ -17,16 +24,16 @@
     <select>
       <option value="default">Filter by Keyword</option>
     </select>
-    <button class="page1">page1</button>
-    <button class="page2">page2</button>
+    <button id="1" class="page1">page1</button>
+    <button id="2" class="page2">page2</button>
   </header>
   <main>
-    <!-- <div></div> -->
-    <template id="photo-template" type="text/x-tmpl-mustache">
+    <div></div>
+    <!-- <template id="photo-template" type="text/x-tmpl-mustache">
         <h2>{{title}}</h2>
         <img src="{{url}}" alt="">
         <p>{{descrip}}</p>
-      </template>
+      </template> -->
   </main>
   <footer>
     © 2018 Code Fellows
