@@ -47,7 +47,7 @@ $(document).ready(function() {
     dataType: 'json'
   };
 
-  $.ajax('../../data/page-1.json', ajaxSettings)
+  $.ajax('data/page-1.json', ajaxSettings)
     .then(data => {
 
       data.forEach(animal => {
@@ -90,7 +90,7 @@ $(document).ready(function() {
 
       $('.page2').click(function(){
         objectArr2=[];
-        $.ajax('../../data/page-2.json', ajaxSettings)
+        $.ajax('data/page-2.json', ajaxSettings)
           .then(data => {
             data.forEach(animal => {
               let newAnimal = new Animal(animal);
