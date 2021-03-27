@@ -1,30 +1,45 @@
 'use strict';
 
 let objectArr=[];
+let objectArr2=[];
 let keyArr = [];
+let keyArr2 = [];
 let uniqueArray=[];
 let uniqueArray2=[];
-function Animal(title,url,descrip,horns,keyword){
-  this.title = title;
-  this.url = url;
-  this.descrip = descrip;
-  this.horns = horns;
-  this.keyword = keyword;
-  objectArr.push(this);
+
+function Animal(animal){
+  this.title = animal.title;
+  this.url = animal.image_url;
+  this.descrip = animal.description;
+  this.horns = animal.horns;
+  this.keyword = animal.keyword;
 }
 
-Animal.prototype.render = function() {
-  $('main').append(`<div class="${this.keyword}"><h2>${this.title}</h2><img src="${this.url}"><p>${this.descrip}</p></div>`);
-};
-
-Animal.prototype.dropList = function(){
+Animal.prototype.page1=function(){
+  objectArr.push(this);
   keyArr.push(this.keyword);
   uniqueArray = [...new Set(keyArr)];
 };
-Animal.prototype.dropList2 = function(){
-  keyArr.push(this.keyword);
-  uniqueArray2 = [...new Set(keyArr)];
+Animal.prototype.page2=function(){
+  objectArr2.push(this);
+  keyArr2.push(this.keyword);
+  uniqueArray2 = [...new Set(keyArr2)];
 };
+
+Animal.prototype.renderH = function () {
+  let template = $('#photo-template').html();
+  let html = Mustache.render(template, this);
+  $('div').append(html);
+};
+
+function renderSelected(selected,arr) {
+  $('div').html('');
+  arr.forEach(element =>{
+    if (selected === element.keyword) {
+      element.renderH();
+    }
+  });
+}
 
 $(document).ready(function() {
   const ajaxSettings = {
@@ -32,83 +47,59 @@ $(document).ready(function() {
     dataType: 'json'
   };
 
-  $.ajax('../data/page-1.json', ajaxSettings)
+  $.ajax('../../data/page-1.json', ajaxSettings)
     .then(data => {
-      data.forEach(element => {
-        let newAnimal = new Animal(element.title,element.image_url,element.description,element.horns,element.keyword);
-        newAnimal.render();
-        newAnimal.dropList();
+
+      data.forEach(animal => {
+        let newAnimal = new Animal(animal);
+        newAnimal.page1();
       });
-      uniqueArray.forEach(element =>{
-        $('select').append(`<option value="${element}">${element}</option>`);
-      });
-      $('select').on('click', function(event){
-        $('div').remove();
-        $('main').append($('<div></div>'));
-        objectArr.forEach(element =>{
-          if (event.target.value === element.keyword) {
-            $('main').append(`<div class="${element.keyword}"><h2>${element.title}</h2><img src="${element.url}"><p>${element.descrip}</p></div>`);
-          }
+      function pageRender(arr,listArr) {
+        $('div').html('');
+        $('#select').empty();
+        arr.forEach(animal => {
+          animal.renderH();
         });
+
+        $('#select').append(`<option value="default">Filter by Keyword</option>`);
+        listArr.forEach(element =>{
+          $('#select').append(`<option value="${element}">${element}</option>`);
+        });
+        $('#select').on('change', function(event){
+          renderSelected(event.target.value,arr);
+        });
+        $('#select2').on('change',function(event){
+          if (event.target.value === 'byTitle'){
+            arr.sort((a,b) => {
+              if (a.title.toUpperCase() > b.title.toUpperCase()) return 1;
+              else if (a.title.toUpperCase() < b.title.toUpperCase()) return -1;
+            });
+          }
+          else if(event.target.value === 'byHorn'){
+            arr.sort((a,b) => {return a.horns-b.horns;});
+          }
+          pageRender(arr,listArr);
+        });
+      }
+      pageRender(objectArr,uniqueArray);
+
+      $('.page1').click(function(){
+        pageRender(objectArr,uniqueArray);
+      });
+
+
+      $('.page2').click(function(){
+        objectArr2=[];
+        $.ajax('../../data/page-2.json', ajaxSettings)
+          .then(data => {
+            data.forEach(animal => {
+              let newAnimal = new Animal(animal);
+              newAnimal.renderH();
+              newAnimal.page2();
+            });
+            pageRender(objectArr2,uniqueArray2);
+          });
       });
     });
-  $('.page1').click(function(){
-    $('div').hide();
-    const ajaxSettings = {
-      method: 'get',
-      dataType: 'json'
-    };
-    $.ajax('../data/page-1.json', ajaxSettings)
-      .then(data => {
-        data.forEach(element => {
-          let newAnimal = new Animal(element.title,element.image_url,element.description,element.horns,element.keyword);
-          newAnimal.render();
-          newAnimal.dropList();
-        });
-        // uniqueArray.forEach(element =>{
-        //   $('select').append(`<option value="${element}">${element}</option>`);
-        // });
-        $('select').on('click', function(event){
-          $('div').remove();
-          $('main').append($('<div></div>'));
-          objectArr.forEach(element =>{
-            if (event.target.value === element.keyword) {
-              $('main').append(`<div class="${element.keyword}"><h2>${element.title}</h2><img src="${element.url}"><p>${element.descrip}</p></div>`);
-            }
-          });
-        });
-      });
-  });
-  $('.page2').click(function(){
-    $('div').hide();
-    $('option').remove();
-    const ajaxSettings = {
-      method: 'get',
-      dataType: 'json'
-    };
-    $.ajax('../data/page-2.json', ajaxSettings)
-      .then(data => {
-        data.forEach(element => {
-          let newAnimal = new Animal(element.title,element.image_url,element.description,element.horns,element.keyword);
-          newAnimal.render();
-          newAnimal.dropList2();
-        });
-        $('select').append(`<option value="default">Filter by Keyword</option>`);
-        uniqueArray2.forEach(element =>{
-          $('select').append(`<option value="${element}">${element}</option>`);
-        });
-        $('select').on('click', function(event){
-          $('div').remove();
-          $('main').append($('<div></div>'));
-          data.forEach(element =>{
-            if (event.target.value === element.keyword) {
-              $('main').append(`<div class="${element.keyword}"><h2>${element.title}</h2><img src="${element.image_url}"><p>${element.description}</p></div>`);
-
-            }
-          });
-        });
-      });
-  });
 });
-
 

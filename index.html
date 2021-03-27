@@ -1,9 +1,19 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
+  
 <head>
   <title>The Gallery of Horns</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  <template id="photo-template" type="text/x-tmpl-mustache">
+    <section>
+    <h2>{{title}}</h2>
+    <img src="{{url}}" alt="">
+    <p>{{descrip}}</p>
+  </section>
+  </template>
+
   <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/base.css">
@@ -14,19 +24,23 @@
 <body>
   <header>
     <h1>The Gallery of Horns</h1>
-    <select>
+    <select id="select">
       <option value="default">Filter by Keyword</option>
     </select>
-    <button class="page1">page1</button>
-    <button class="page2">page2</button>
+    <select id="select2">
+      <option value="sortBy">Sort By</option>
+      <option value="byTitle">Title</option>
+      <option value="byHorn">Horn</option>
+  </select>
+    <button id="1" class="page1">page1</button>
+    <button id="2" class="page2">page2</button>
   </header>
   <main>
-
-    <!-- <div></div> -->
-    <!-- <template id="photo-template">
-        <h2></h2>
-        <img src="" alt="">
-        <p></p>
+    <div></div>
+    <!-- <template id="photo-template" type="text/x-tmpl-mustache">
+        <h2>{{title}}</h2>
+        <img src="{{url}}" alt="">
+        <p>{{descrip}}</p>
       </template> -->
   </main>
   <footer>
@@ -34,7 +48,8 @@
   </footer>
   <script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
     crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
 </body>
 
 </html>

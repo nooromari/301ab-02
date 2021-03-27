@@ -3,12 +3,22 @@ header{
 }
 
 div{
-    float: left;
+   display: flex;
+   flex-wrap: wrap ;
+   justify-content: center;
+   text-align: center;
+}
+section{
     width: 300px;
     height: 300px;
-    text-align: center;
 }
 footer{
     clear: both;
     text-align: center;
+}
+.page1{
+float: left;
+}
+.page2{
+    float: right;
 }
