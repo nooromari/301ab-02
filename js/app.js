@@ -6,6 +6,7 @@ let keyArr = [];
 let keyArr2 = [];
 let uniqueArray=[];
 let uniqueArray2=[];
+
 function Animal(animal){
   this.title = animal.title;
   this.url = animal.image_url;
@@ -55,25 +56,37 @@ $(document).ready(function() {
       });
       function pageRender(arr,listArr) {
         $('div').html('');
-        $('select').empty();
+        $('#select').empty();
         arr.forEach(animal => {
           animal.renderH();
         });
 
-        $('select').append(`<option value="default">Filter by Keyword</option>`);
+        $('#select').append(`<option value="default">Filter by Keyword</option>`);
         listArr.forEach(element =>{
-          $('select').append(`<option value="${element}">${element}</option>`);
+          $('#select').append(`<option value="${element}">${element}</option>`);
         });
-        $('select').on('change', function(event){
+        $('#select').on('change', function(event){
           renderSelected(event.target.value,arr);
         });
+        $('#select2').on('change',function(event){
+          if (event.target.value === 'byTitle'){
+            arr.sort((a,b) => {
+              if (a.title.toUpperCase() > b.title.toUpperCase()) return 1;
+              else if (a.title.toUpperCase() < b.title.toUpperCase()) return -1;
+            });
+          }
+          else if(event.target.value === 'byHorn'){
+            arr.sort((a,b) => {return a.horns-b.horns;});
+          }
+          pageRender(arr,listArr);
+        });
       }
+      pageRender(objectArr,uniqueArray);
 
       $('.page1').click(function(){
         pageRender(objectArr,uniqueArray);
       });
 
-      pageRender(objectArr,uniqueArray);
 
       $('.page2').click(function(){
         objectArr2=[];
@@ -89,3 +102,4 @@ $(document).ready(function() {
       });
     });
 });
+

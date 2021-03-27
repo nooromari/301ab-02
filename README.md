@@ -75,19 +75,19 @@ Estimate of time needed to complete: 30min
 
 Start time: 1:00am
 
-Finish time: _____
+Finish time: 1:40am
 
-Actual time needed to complete: _____
+Actual time needed to complete: 40min
 
 
 ### Feature 4
 
 Number and name of feature: Feature 4: Sort the images
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 1:45am
 
-Finish time: _____
+Finish time: 2:45am
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hr
